@@ -955,6 +955,29 @@
                     </form>
                 </div>
             </div>
+            <div id="review-section">
+  <h3>Leave a Review</h3>
+  <form id="reviewForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="rating">Rating:</label>
+    <select id="rating" name="rating" required>
+      <option value="">Select</option>
+      <option value="1">⭐</option>
+      <option value="2">⭐⭐</option>
+      <option value="3">⭐⭐⭐</option>
+      <option value="4">⭐⭐⭐⭐</option>
+      <option value="5">⭐⭐⭐⭐⭐</option>
+    </select><br><br>
+
+    <label for="review">Review:</label><br>
+    <textarea id="review" name="review" rows="4" cols="50" required></textarea><br><br>
+
+    <button type="submit">Submit Review</button>
+  </form>
+</div>
+
             <div class="map-container fade-in">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0842738655756!2d80.21859531482232!3d13.107844590779842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265d3e5c5f5e3%3A0x5f5f5f5f5f5f5f5f!2sKolathur%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -1063,6 +1086,30 @@ ${message}`;
                 }
             });
         });
+        document.getElementById('reviewForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const rating = document.getElementById('rating').value;
+    const review = document.getElementById('review').value;
+
+    // WhatsApp message text
+    const whatsappMessage = `Hello JayaMadhi Construction! 
+
+New Review Submitted:
+
+Name: ${name}
+Rating: ${rating}⭐
+Review: ${review}`;
+
+    // Open WhatsApp chat with pre-filled message
+    // Replace '91673647883' with your WhatsApp number (with country code)
+    window.open(`https://wa.me/91673647883?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+
+    // Reset form
+    e.target.reset();
+});
+
     </script>
 </body>
 </html>
